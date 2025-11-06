@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DonateLife - Organ Donation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 60px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.3em;
+      color: #1fa347;
+    }
+
+    .logo span {
+      margin-left: 8px;
+    }
+
+    .logo i {
+      color: red;
+      font-size: 1.4em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: 0.2s;
+      padding: 6px 10px;
+      border-radius: 5px;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #1fa347;
+      color: #fff;
+    }
+
+    .login-btn {
+      background-color: #e01717;
+      color: white !important;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+
+    .login-btn:hover {
+      background-color: #b81212;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: #7a7a7a;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.1em;
+      margin: 20px 0;
+    }
+
+    .hero .btn {
+      background-color: #e01717;
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+
+    .hero .btn:hover {
+      background-color: #b81212;
+      transform: translateY(-2px);
+    }
+
+    /* About Section */
+    .about {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #fff;
+    }
+
+    .about h2 {
+      font-size: 2em;
+      font-weight: 700;
+      color: #12263a;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: 20px auto;
+      line-height: 1.7;
+      font-size: 1.1em;
+      color: #3d4b5b;
+    }
+
+    /* Donors Section */
+    .donors {
+      background-color: #f8f8f8;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .donors h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+      color: #12263a;
+    }
+
+    .donor-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .donor-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .donor-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .donor-card h3 {
+      color: #1fa347;
+      margin-bottom: 10px;
+    }
+
+    .donor-card p {
+      margin: 6px 0;
+    }
+
+    /* Recipient Form */
+    .recipient {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .recipient h2 {
+      font-size: 2em;
+      color: #12263a;
+    }
+
+    .recipient-form {
+      max-width: 600px;
+      margin: 30px auto;
+      text-align: left;
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .recipient-form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+
+    .recipient-form input, 
+    .recipient-form select, 
+    .recipient-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 6px;
+      font-size: 1em;
+    }
+
+    .recipient-form button {
+      background-color: #1fa347;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      font-size: 1em;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .recipient-form button:hover {
+      background-color: #158a38;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f8f8f8;
+      color: #555;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <i>❤</i><span>DonateLife</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">About Donation</a></li>
+        <li><a href="#">Available Donors</a></li>
+        <li><a href="#">Register as Donor</a></li>
+        <li><a href="#">Register as Recipient</a></li>
+        <li><a href="#" class="login-btn">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Give the Gift of Life</h1>
+    <p>One organ donor can save up to eight lives. Become a hero today.</p>
+    <button class="btn">Register as a Donor</button>
+  </section>
+
+  <section class="about">
+    <h2>What is Organ Donation?</h2>
+    <p>
+      Organ donation is the process of giving an organ or a part of an organ for the purpose of transplantation into another person. 
+      It's a generous act that can save or vastly improve the lives of others.
+    </p>
+  </section>
+
+  <section class="donors">
+    <h2>Available Donors</h2>
+    <div class="donor-list">
+      <div class="donor-card">
+        <h3>John Doe</h3>
+        <p><strong>Blood Group:</strong> O+</p>
+        <p><strong>Organ:</strong> Kidney</p>
+        <p><strong>Location:</strong> Hyderabad</p>
+      </div>
+      <div class="donor-card">
+        <h3>Priya Sharma</h3>
+        <p><strong>Blood Group:</strong> A+</p>
+        <p><strong>Organ:</strong> Liver</p>
+        <p><strong>Location:</strong> Mumbai</p>
+      </div>
+      <div class="donor-card">
+        <h3>Rahul Patel</h3>
+        <p><strong>Blood Group:</strong> B-</p>
+        <p><strong>Organ:</strong> Heart</p>
+        <p><strong>Location:</strong> Delhi</p>
+      </div>
+      <div class="donor-card">
+        <h3>Anita Rao</h3>
+        <p><strong>Blood Group:</strong> AB+</p>
+        <p><strong>Organ:</strong> Eye</p>
+        <p><strong>Location:</strong> Bengaluru</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="recipient">
+    <h2>Register as a Recipient</h2>
+    <form class="recipient-form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your full name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="blood">Blood Group</label>
+      <select id="blood" required>
+        <option value="">Select Blood Group</option>
+        <option>O+</option><option>O-</option>
+        <option>A+</option><option>A-</option>
+        <option>B+</option><option>B-</option>
+        <option>AB+</option><option>AB-</option>
+      </select>
+
+      <label for="organ">Required Organ</label>
+      <input type="text" id="organ" placeholder="e.g. Kidney, Liver" required>
+
+      <label for="message">Additional Information</label>
+      <textarea id="message" rows="4" placeholder="Enter details..."></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 DonateLife | All Rights Reserved
+  </footer>
+
+</body>
+</html>
